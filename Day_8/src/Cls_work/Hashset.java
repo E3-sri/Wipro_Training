@@ -1,0 +1,23 @@
+package Cls_work;
+import java.util.HashSet;
+
+
+
+public class Hashset
+{
+	
+
+	public static void main(String[] args)
+	{
+		//Set<String> flowers =new HashSet<>();
+		
+		HashSet<String> flowers= new HashSet<>();
+		
+		flowers.add("Rose");
+		flowers.add("Jasmine");
+		flowers.add("Lilly");
+		flowers.add("Rose");
+		System.out.println(flowers);		
+	}
+
+}

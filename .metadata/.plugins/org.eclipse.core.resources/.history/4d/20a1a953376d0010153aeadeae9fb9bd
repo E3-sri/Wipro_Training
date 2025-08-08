@@ -1,0 +1,203 @@
+package Cls_work;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+class Patient {
+    private String id;
+    private String name;
+    private int age;
+    private String disease;
+
+    public Patient(String id, String name, int age, String disease) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.disease = disease;
+    }
+
+    public String getId() { return id; }
+    public String getName() { return name; }
+    public int getAge() { return age; }
+    public String getDisease() { return disease; }
+
+    @Override
+    public String toString() {
+        return "Patient[ID: " + id + ", Name: " + name + ", Age: " + age + ", Disease: " + disease + "]";
+    }
+}
+
+public class HospitalMap {
+
+    private static Map<String, Patient> patientMap = new HashMap<>();
+    private static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int choice;
+        do {
+            System.out.println("\n ****Hospital Management System****");
+            System.out.println("1. Add Patient");
+            System.out.println("2. Remove Patient");
+            System.out.println("3. Search Patient by ID");
+            System.out.println("4. View All Patients");
+            System.out.println("5.Update Patients");
+            System.out.println("6.Clear all Patients");
+            System.out.println("7. Exit");
+            System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+            sc.nextLine();  
+
+            switch (choice) {
+                case 1: addPatient(); 
+                			break;
+                case 2: removePatient();
+                			break;
+                case 3: searchPatient();
+                			break;
+                case 4: displayAllPatients(); 
+                			break;
+                case 5: updatePatients(); 
+    						break;
+                case 6: clearPatients();
+                			break;
+                case 7: System.out.println("Exiting..."); 
+                			break;
+                default: System.out.println(" Invalid choice. Try again.");
+            }
+
+        } while (choice != 5);
+
+        sc.close();
+    }
+		//To add a patient
+    private static void addPatient()
+    {
+        System.out.print("Enter Patient ID: ");
+        String id = sc.nextLine();
+
+        if (patientMap.containsKey(id)) {
+            System.out.println("Patient with this ID already exists.");
+            return;
+        }
+
+        System.out.print("Enter Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Age: ");
+        int age = sc.nextInt();
+        sc.nextLine(); 
+
+        System.out.print("Enter Disease: ");
+        String disease = sc.nextLine();
+
+        Patient p = new Patient(id, name, age, disease);
+        patientMap.put(id, p);
+        System.out.println(" Patient added successfully!");
+    }
+
+    //To remove a patient
+    private static void removePatient() 
+    {
+        System.out.print("Enter Patient ID to remove: ");
+        String id = sc.nextLine();
+
+        if (patientMap.containsKey(id))
+        {
+            patientMap.remove(id);
+            System.out.println(" Patient removed.");
+        }
+        else
+        {
+            System.out.println(" No patient found with this ID.");
+        }
+    }
+
+    		//To search patient
+    		private static void searchPatient()
+    		{
+        System.out.print("Enter Patient ID to search: ");
+        String id = sc.nextLine();
+
+        if (patientMap.containsKey(id))
+        {
+            System.out.println(" Found: " + patientMap.get(id));
+        } 
+        
+        else
+        {
+            System.out.println("Patient not found.");
+        }
+    		}
+    		
+    		//Update the patient
+    		
+    			private static void updatePatient()
+    			{
+    				
+    				
+    		 	System.out.println("Enter Patient ID to update: ");
+    	        String id = sc.nextLine();
+
+    	        if (patientMap.containsKey(id))
+    	        {
+    	        	 Patient existing = patientMap.get(id);
+    	        	 
+    	        	 System.out.println("Existing Details: " + existing);
+    	         System.out.print("Enter New Name: ");
+    	         String name = sc.nextLine();
+    	         
+    	         System.out.print("Enter New Age: ");
+    	         int age = sc.nextInt();
+    	         sc.nextLine();
+
+    	         System.out.print("Enter New Disease: ");
+    	         String disease = sc.nextLine();
+
+    	         Patient updated = new Patient(id, name, age, disease);
+    	         patientMap.put(id, updated);
+    	         
+    	         System.out.println("Patient details updated.");
+    	        }
+    	        else 
+    	        {
+    	            System.out.println(" Patient ID not found.");
+    	        }
+    	    }
+    	    
+    		//Displaying patients
+    		private static void displayAllPatients() 
+    		{
+        if (patientMap.isEmpty())
+        {
+            System.out.println(" No patients registered.");
+        } 
+        else
+        {
+            System.out.println(" List of Patients:");
+            for (Patient p : patientMap.values())
+            {
+                System.out.println(p);
+            }
+        }
+        
+    		}
+        
+        //clear all patient records
+        
+        private static void clearPatients()
+        {
+            System.out.println(" Are you sure you want to delete ALL records? (yes/no): ");
+            String confirm = sc.nextLine();
+
+            if (confirm.equalsIgnoreCase("yes"))
+            {
+                patientMap.clear();
+                System.out.println("All patient records cleared.");
+            } 
+            else
+            {
+                System.out.println("Operation cancelled.");
+            }      
+        	}
+}
+

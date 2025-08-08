@@ -1,0 +1,40 @@
+package JDBC;
+import java.sql.*;
+import java.sql.Connection;
+
+import java.sql.DriverManager;
+
+public class DBConnectivity
+{
+
+	public static void main(String[] args)
+	{
+		String userName="root";
+		String userPwd="Hyma@2002";
+		String url="jdbc:mysql://localhost:3306/Student";
+		
+		try
+		{	//to load JDBC driver and give the path in "".
+			
+			Class.forName("");  //Class is--->mysql driver class is registered with DriverManager.
+			
+			//Establish a connection and "" in that String will be given
+			
+			//Driver manager is used to load the drivers into DataBase.
+			
+			Connection con=DriverManager.getConnection(url,userName,userPwd);    //pwd is which you set to 'MySql'.
+			
+			System.out.println("Connected Successfully");
+			
+			Statement stmt =con. createStatement();   // To create sql statement
+			
+			con.close();   // closes the connection . To avoid memory lekage.
+		}
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+}

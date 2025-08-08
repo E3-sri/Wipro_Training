@@ -1,0 +1,32 @@
+package JDBC;
+import java.sql.*;
+
+//import java.sql.DriverManager;
+
+public class DBConnectivity
+{
+
+	public static void main(String[] args)
+	{
+		
+		try
+		{	//to load JDBC driver and give the path in "".
+			Class.forName("");
+			
+			//Establish a connection and "" in that String will be given.
+			
+			//Driver manager is used to load the drivers into DataBase.
+			
+			Connection con=DriverManager.getConnection("");
+			
+			System.out.println("Connected Successfully");
+			con.close();
+		}
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+}

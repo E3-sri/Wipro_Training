@@ -1,0 +1,10 @@
+package clas_work;
+
+class insufficientBalanceException  extends Exception
+{
+	public InsufficientBalanceException(String message)
+	{
+			super(message);
+	}
+	
+}

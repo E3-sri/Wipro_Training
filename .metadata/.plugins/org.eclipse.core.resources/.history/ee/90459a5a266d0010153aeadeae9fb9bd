@@ -1,0 +1,31 @@
+package Cls_work;
+import java.util.HashMap;
+
+
+public class HospitalMapping
+{
+	 public static void main(String[] args)
+	 {
+		 HashMap<Integer,String> patientMap =new HashMap<>();
+		 
+		 //To add patients
+		 
+		 patientMap.put(101, "Sree");
+		 patientMap.put(102, "Lakshmi");
+		 patientMap.put(103, "Chaturvedula");
+		 
+		 
+		 //Get Patient ID
+		 
+		 System.out.println(patientMap.get(103));
+		 
+		 
+		 //To check if ID Exists
+		 
+		 System.out.println(patientMap.containsKey(102));
+		 
+		 //System.out.println(patientMap.get("Lakshmi"));	 
+
+		
+	 }
+}

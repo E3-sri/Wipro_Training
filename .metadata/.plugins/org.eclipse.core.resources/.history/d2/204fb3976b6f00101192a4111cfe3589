@@ -1,0 +1,168 @@
+package com.ClassWork;
+import java.sql.*;
+
+
+public class DBConnectivity {
+
+	public static void main(String[] args)
+	{
+		
+		String url = "jdbc:mysql://localhost:3306/Hospital"; 
+        String username = "root";     
+        String password = "Hyma@2002"; 
+        
+        try
+		{
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			Connection con=DriverManager.getConnection(url,username,password);
+			
+			
+			//Statement stmt=con.createStatement();
+					
+			
+			//interface is prepared statement
+			//PreparedStatement pstmt=con.prepareStatement(sql);
+			
+			
+			//methods of prepared statement
+			/*pstmt.setString(1,"Hymavathi");
+			
+			pstmt.setInt(2, 23);
+			
+			pstmt.setString(3, "Fever");
+			*/
+			
+			
+		//To update the data
+			
+			/*String sql= "UPDATE patient SET name=? WHERE name=? ";
+			
+			PreparedStatement pstmt=con.prepareStatement(sql);
+			
+			
+			pstmt.setString(1,"Anshitha");	
+			
+			pstmt.setString(2, "Chotu");
+			
+			
+			int rows=pstmt.executeUpdate();
+			
+			System.out.println("Patient name updated Successfully");
+			con.close();
+			*/
+			
+			
+			//To update diff record like name,age ,disease
+			
+			String Name = "UPDATE patient SET name = ? WHERE id = ?";
+			String Age = "UPDATE patient SET age = ? WHERE id = ?";
+			String Disease = "UPDATE patient SET disease = ? WHERE id = ?";
+			
+			// Update name
+			PreparedStatement pstmtName = con.prepareStatement(Name);
+			pstmtName.setString(1, "Anshi");
+			pstmtName.setInt(1,101);  // assuming ID=101
+			pstmtName.executeUpdate();
+
+			// Update age
+			PreparedStatement pstmtAge = con.prepareStatement(Age);
+			pstmtAge.setInt(24,1);
+			pstmtAge.setInt( 2,102); // ID=102
+			pstmtAge.executeUpdate();
+
+			// Update disease
+			PreparedStatement pstmtDisease = con.prepareStatement(Disease);
+			pstmtDisease.setString(1, "Flu");
+			pstmtDisease.setInt(2,103); // ID=103
+			pstmtDisease.executeUpdate();
+
+			System.out.println("Updates completed.");
+			con.close();
+				
+			
+		//To update multiple names at a time.
+			
+			/*String sql= "UPDATE patient SET name=? WHERE name=? ";
+			
+			PreparedStatement pstmt=con.prepareStatement(sql);
+
+			String [][] updates=
+				{
+						{"Siri","Udaya"},{"Chotu","Anshitha"},
+								 {"Deepu","Deppanwitha"}
+				};
+			
+			for(String[] pair:updates)
+			{
+				pstmt.setString(1,pair[0]);
+				pstmt.setString(2,pair[1]);
+				pstmt.executeUpdate();
+				
+			}
+			
+			System.out.println("Multiple patinet names have been updated");
+			
+			con.close();
+			
+		//To insert multiple data 
+			
+		/*	PreparedStatement pstmt=con.prepareStatement(sql);
+			
+			
+			//To insert multiple data
+			//String sql= "INSERT INTO patient(name,age,disease) VALUES(?,?,?)";
+
+			
+			String[][] data=
+				{
+					
+						{"Chotu","23","Body Pains"},
+						{"Udaya","22","Headache"},
+						{"Aishwarya","23","Backache"},
+						{"Deppanwitha","23","Stomachache"},
+						{"Bhargavi","23","Cough"}
+
+				};			
+			
+			for(String[] row: data)
+			{
+				pstmt.setString(1, row[0]);
+				pstmt.setInt(2, Integer.parseInt(row[1]));
+				pstmt.setString(3,row[2]);
+				
+				pstmt.executeUpdate();
+			}
+			
+			System.out.println("All Patients inserted Successfully");
+			con.close();	
+				
+				
+			/* to insert values 
+			 
+			 int rowInserted =pstmt.executeUpdate();
+			
+			if(rowInserted>0)
+			{
+				System.out.println("Values in patient table inserted Successfully.");
+			}
+			*/
+			
+			//pstmt.executeUpdate(sql);
+			
+			//System.out.println(" 'Patient Table'  created Successfully");
+			
+			//con.close();
+	
+		}
+		
+		catch(Exception e )
+		{
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
+

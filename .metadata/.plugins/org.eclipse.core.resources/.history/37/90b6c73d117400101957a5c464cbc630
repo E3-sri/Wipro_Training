@@ -1,0 +1,7 @@
+package classWork;
+import java.util.Scanner;
+public class pro {
+	Scanner sca=new Scanner(System.in);
+	String k=sca.nextLine();
+	System.out.print(k);
+}

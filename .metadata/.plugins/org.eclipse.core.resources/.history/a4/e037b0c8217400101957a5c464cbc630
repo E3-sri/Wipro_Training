@@ -1,0 +1,208 @@
+/* Use Case: Patient Records Management System
+💡 Problem Statement
+Hospitals need to store, retrieve, and update patient data including name, ID, disease, and age in a file. The application should:
+Accept new patient entries
+Save them to a file
+Read and display patient data
+Use serialization to store complete patient objects */
+ 
+
+
+
+
+
+package Cls_work;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
+
+
+class Patient {
+	
+	static File file = new File("PatientFile.txt");
+
+    public static void createFile()
+    {
+
+        try 
+        {
+            if (file.createNewFile()) {
+                System.out.println("Patient file created: " + file.getName());
+            } 
+            else 
+            {
+                System.out.println("Patient file already exists.");
+            }
+        }
+        catch (IOException e)
+        {
+            System.out.println("Error creating file.");
+            e.printStackTrace();
+        }
+    }
+    
+    //Adding Patient
+    public static void addPatient(Scanner sc) 
+    {
+        try {
+        	
+            System.out.print("Enter Patient ID: ");
+            int id = sc.nextInt();
+            sc.nextLine();
+            
+            System.out.print("Enter Name: ");
+            String name = sc.nextLine();
+            
+            System.out.print("Enter Age: ");
+            int age = sc.nextInt();
+            sc.nextLine();
+            
+            System.out.print("Enter Disease: ");
+            String disease = sc.nextLine();
+
+            
+            FileWriter writer = new FileWriter(file, true); 
+            writer.write(id + "," + name + "," + age + "," + disease + "\n");
+            writer.close();
+            System.out.println("Patient added successfully.");
+
+        } 
+        catch (IOException e)
+        {
+            System.out.println("Error writing to file.");
+            e.printStackTrace();
+        }
+    }
+
+    //Displaying All Patients
+    
+    public static void displayPatients() 
+    {
+        try 
+        {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String line;
+            System.out.println("\n--- All Patients ---");
+            while ((line = reader.readLine()) != null) 
+            {
+                String[] data = line.split(",");
+                if (data.length == 4)
+                {
+                    System.out.println("ID: " + data[0] + ", Name: " + data[1] + ", Age: " + data[2] + ", Disease: " + data[3]);
+                }
+            }
+            reader.close();
+        } 
+        catch (IOException e)
+        {
+            System.out.println("Error reading file.");
+            e.printStackTrace();
+        }
+    }
+
+    
+    //Update Patient by ID
+    
+    public static void updatePatient(Scanner sc)
+    {
+        try
+        {
+            System.out.print("Enter Patient ID to update: ");
+            int targetId = sc.nextInt();
+            sc.nextLine();
+            System.out.print("Enter new Disease: ");
+            String newDisease = sc.nextLine();
+
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            List<String> lines = new ArrayList<>();
+            String line;
+            boolean updated = false;
+
+            while ((line = reader.readLine()) != null)
+            {
+                String[] data = line.split(",");
+                if (data.length == 4) {
+                    int id = Integer.parseInt(data[0]);
+                    if (id == targetId)
+                    {
+                        line = id + "," + data[1] + "," + data[2] + "," + newDisease;
+                        updated = true;
+                    }
+                }
+                lines.add(line);
+            }
+            reader.close();
+
+            FileWriter writer = new FileWriter(file, false); // overwrite mode
+            for (String l : lines) {
+                writer.write(l + "\n");
+            }
+            writer.close();
+
+            if (updated) 
+            {
+                System.out.println("Patient updated successfully.");
+            } 
+            else
+            {
+                System.out.println("Patient ID not found.");
+            }
+
+        } catch (IOException e) 
+        {
+            System.out.println("Error updating patient.");
+            e.printStackTrace();
+        }
+    }
+
+    //Main Method
+    public static void main(String[] args)
+	    {
+
+	        Scanner sc = new Scanner(System.in);
+	        createFile();
+
+	        while (true) {
+	            System.out.println("\n===== Patient Records Management System =====");
+	            System.out.println("1. Add New Patient");
+	            System.out.println("2. View All Patients");
+	            System.out.println("3. Update Patient Disease by ID");
+	            System.out.println("4. Exit");
+	            System.out.print("Enter your choice: ");
+	            int choice = sc.nextInt();
+	            sc.nextLine(); // consume newline
+
+	            switch (choice)
+	            {
+	                case 1 :
+	                {
+	                	addPatient(sc);
+	                }
+	                case 2 :
+	                {
+	                		displayPatients();
+	                }
+	                case 3 :
+	                	{
+	                		updatePatient(sc);
+	                	
+	                	}
+	                case 4 :
+	                {
+	                    System.out.println("Exiting...");
+	                    return;
+	                }
+	                   default : System.out.println("Invalid choice!");
+	            
+	            }
+	    }
+	}
+    
+}
+
+		
+

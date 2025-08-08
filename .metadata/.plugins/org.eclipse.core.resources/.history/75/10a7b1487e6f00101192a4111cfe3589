@@ -1,0 +1,261 @@
+/*A hospital wants to automate its patient registration system. When a new patient arrives, staff members will enter details such as:
+Patient Name
+Age
+Disease
+Admission Date
+Doctor Assigned
+This data should be saved into a patient table in the hospital's database.
+
+*/
+package com.ClassWork;
+import java.sql.*;
+import java.util.Scanner;
+
+public class PatientDB 
+{
+
+	public static void main(String[] args)
+	{
+			try {
+				
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital", "root", "Hyma@2002");
+
+		
+			//	Statement stmt=con.createStatement();
+				
+			//	String sql="CREATE TABLE IF NOT EXISTS PatientTable("+"id INT PRIMARY KEY AUTO_INCREMENT,"
+				//		+ "name VARCHAR(100),"+"age INT,"+"disease VARCHAR(100) ,"+"Admission_Date DATE,"+" doctor_Assigned VARCHAR(100))";
+				
+				Scanner sc = new Scanner(System.in);
+
+	            // Taking input of patient details
+				
+				
+			/*	System.out.print("Enter Patient Id: ");
+	            int Id = sc.nextInt(); 
+	            sc.nextLine();
+	            
+	            System.out.print("Enter Patient Name: ");
+	            String name = sc.nextLine();
+	          
+
+	            System.out.print("Enter Age: ");
+	            int age = sc.nextInt();
+	            sc.nextLine(); 
+
+	            System.out.print("Enter Disease: ");
+	            String disease = sc.nextLine();
+
+	            System.out.print("Enter Admission Date (yyyy-mm-dd): ");
+	            String Admission_Date = sc.nextLine();
+
+	            System.out.print("Enter Doctor Assigned: ");
+	            String doctor_Assigned = sc.nextLine();
+	            
+	            //Inserting values to PatientTable
+	            
+	            String insertSQL = "INSERT INTO PatientTable (id,name, age, disease, admission_date, doctor_assigned) VALUES (?,?, ?, ?, ?, ?)";
+	            
+	            PreparedStatement pstmt = con.prepareStatement(insertSQL);
+	            pstmt.setInt(1, Id);
+	            pstmt.setString(2, name);
+	            pstmt.setInt(3, age);
+	            pstmt.setString(4,disease);
+	            pstmt.setDate(5, Date.valueOf(Admission_Date)); // converts to java.sql.Date
+	            pstmt.setString(6, doctor_Assigned);
+	            
+	            //
+	           
+	            int rowsInserted = pstmt.executeUpdate();
+	           
+	            System.out.println(rowsInserted + " Inserted registered successfully.\n");
+	            
+	            */
+				
+				//To update the records of created table.
+				
+				
+			// Step 1: Checking for Valid id.
+				
+	            
+	            // --- Step 2: Update the record ---   
+	            
+	          //  String updateSQL = "";
+	           // PreparedStatement pstmt = null;
+	            
+	            
+	           
+	        	int choice;
+				
+	            //To update the records
+	          do {
+	        	  	System.out.println("\nChoose among these to update\n 1.name\n 2.age\n 3.disease\n 4.admissiondate\n 5.doctorassigned\n 6.exit\n");
+		            System.out.println("Enter choice:");
+					choice=sc.nextInt();
+					sc.nextLine();
+					
+				switch(choice)
+			    {    
+							
+	            
+	            case 1:{
+	            System.out.print("Enter new name: ");
+	            String name = sc.nextLine();
+	            updateSQL = "UPDATE PatientTable SET name = ? WHERE id = ?";
+                pstmt = con.prepareStatement(updateSQL);
+                pstmt.setString(1, name);
+                pstmt.setInt(2, idToUpdate);
+                int rows = pstmt.executeUpdate();
+                if (rows > 0) {
+                	System.out.println("New name has been updated");
+                	pstmt.close();
+                	break;
+                }
+                else
+	            {
+	                System.out.println("No patient found with ID: " + idToUpdate);
+	            }
+	            
+               
+	            }
+
+	            case 2:
+	            { 
+	            System.out.print("Enter new age: ");
+	            int age = sc.nextInt();
+	            sc.nextLine();
+	            updateSQL = "UPDATE PatientTable SET age = ? WHERE id = ?";
+                pstmt = con.prepareStatement(updateSQL);
+                pstmt.setInt(1, age);
+                pstmt.setInt(2, idToUpdate);        
+                int rows = pstmt.executeUpdate();
+                if (rows > 0) {
+                	System.out.println("New Age has been updated");
+                	pstmt.close();
+                	  break;}
+                else
+	            {
+	                System.out.println("No patient found with ID: " + idToUpdate);
+	            }
+	            
+	            }
+
+	            case 3:
+	            {
+	            System.out.print("Enter new disease: ");
+	            String disease = sc.nextLine();
+	            updateSQL = "UPDATE PatientTable SET disease = ? WHERE id = ?";
+                pstmt = con.prepareStatement(updateSQL);
+                pstmt.setString(1, disease);
+                pstmt.setInt(2, idToUpdate);            
+                int rows = pstmt.executeUpdate();
+                if (rows > 0) {
+                	System.out.println("New Disease has been updated");
+                	 pstmt.close();
+                	  break;}
+                else
+	            {
+	                System.out.println("No patient found with ID: " + idToUpdate);
+	            }
+	        
+                
+	            }
+
+
+	            case 4:
+	            {
+	            System.out.print("Enter new admission date (yyyy-mm-dd): ");
+	            String Admission_Date = sc.nextLine();
+	            updateSQL = "UPDATE PatientTable SET admission_date = ? WHERE id = ?";
+                pstmt = con.prepareStatement(updateSQL);
+                pstmt.setDate(1, Date.valueOf(Admission_Date));
+                pstmt.setInt(2, idToUpdate);
+                int rows = pstmt.executeUpdate();
+                if (rows > 0) {
+                	System.out.println("New Admmision date has been updated");
+                    
+                    pstmt.close();
+                    break;}
+                else
+	            {
+	                System.out.println("No patient found with ID: " + idToUpdate);
+	            }
+	      
+
+	          
+	            }
+
+
+	            case 5:
+	            {
+	            System.out.print("Enter new doctor assigned: ");
+	            String doctor_Assigned = sc.nextLine();
+	            updateSQL = "UPDATE PatientTable SET doctor_assigned = ? WHERE id = ?";
+                pstmt = con.prepareStatement(updateSQL);
+                pstmt.setString(1, doctor_Assigned);
+                pstmt.setInt(2, idToUpdate);
+                int rows = pstmt.executeUpdate();
+                if (rows > 0)
+                {
+                	System.out.println("New Doctor has been updated");
+                	pstmt.close();
+                	break;
+                }
+	            }
+	            case 6:
+	            	System.out.println("Exiting.....");
+	            	break;
+	            	
+	            default:
+	            		System.out.println("Invalid Choice");
+
+	            }
+	          }while(choice!=6);
+	            
+	            
+	            
+	           
+	            
+	            //To display updated records in eclipse
+	            
+	            System.out.println("------Updated Patient Records ------");
+	            Statement stmt = con.createStatement();
+	            ResultSet rs = stmt.executeQuery("SELECT * FROM PatientTable");
+
+	            while (rs.next()) {
+	                System.out.println("ID: " + rs.getInt("id"));
+	                System.out.println("Name: " + rs.getString("name"));
+	                System.out.println("Age: " + rs.getInt("age"));
+	                System.out.println("Disease: " + rs.getString("disease"));
+	                System.out.println("Admission Date: " + rs.getDate("Admission_Date"));
+	                System.out.println("Doctor Assigned: " + rs.getString("doctor_Assigned"));
+	                System.out.println("----------------------------");
+	            }
+
+	            rs.close();
+	            stmt.close();
+	            pstmt.close();
+	            
+	            
+	            
+	            
+	            
+				
+				//stmt.executeUpdate(sql);
+				//System.out.println("Table 'Patient' created successfully.");
+				con.close();
+				sc.close();
+			 }
+			catch (Exception e)
+			{
+			e.printStackTrace();
+					
+			}
+	}
+
+		 
+		 
+
+}
+

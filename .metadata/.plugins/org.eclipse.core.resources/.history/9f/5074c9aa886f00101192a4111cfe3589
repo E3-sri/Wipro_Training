@@ -1,0 +1,60 @@
+package com.ClassWork;
+import java.sql.*;
+
+public class UpdateEmp 
+{
+		public static void main(String[] args)
+		{
+			
+			String url = "jdbc:mysql://localhost:3306/Worker"; 
+	        String username = "root";     
+	        String password = "Hyma@2002";
+			 try
+				{
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					
+					Connection con=DriverManager.getConnection(url,username,password);
+					
+					//To update the ID
+					
+					/*String updateSQL= "UPDATE Employee SET id=? WHERE id=? ";
+					
+					PreparedStatement pstmt=con.prepareStatement(updateSQL);
+					
+					
+					pstmt.setString(1,"106");	
+					
+					pstmt.setString(2, "10");
+					
+					
+					pstmt.executeUpdate();
+					
+					System.out.println("Employee Id updated successfully");
+					con.close();
+				  }
+					
+					 */
+					String updateSQL= "UPDATE Employee SET Salary=? WHERE Salary=? ";
+					
+					PreparedStatement pstmt=con.prepareStatement(updateSQL);
+					
+					
+					pstmt.setString(1,"13500");
+
+					pstmt.setString(2,"10500");
+			
+					pstmt.executeUpdate();
+					
+					System.out.println("Employee Salary updated successfully");
+					con.close();
+				  }
+				
+			 	catch (Exception e)
+				{
+			 			e.printStackTrace();
+						
+				}
+		
+		}
+		
+}			 

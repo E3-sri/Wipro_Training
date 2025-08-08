@@ -1,0 +1,64 @@
+/*A hospital wants to automate its patient registration system. When a new patient arrives, staff members will enter details such as:
+Patient Name
+Age
+Disease
+Admission Date
+Doctor Assigned
+This data should be saved into a patient table in the hospital's database.
+
+*/
+package com.ClassWork;
+import java.sql.*;
+import java.util.Scanner;
+
+public class PatientDB 
+{
+
+	public static void main(String[] args)
+	{
+			try {
+				
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital", "root", "Hyma@2002");
+
+		
+				Statement stmt=con.createStatement();
+				
+				String sql="CREATE TABLE IF NOT EXISTS PatientTable("+"id INT PRIMARY KEY AUTO_INCREMENT,"
+						+ "name VARCHAR(100),"+"age INT,"+"disease VARCHAR(100) ,"+"Admission_Date DATE,"+" doctor_Assigned VARCHAR(100))";
+				
+				Scanner sc = new Scanner(System.in);
+
+	            // Taking input of patient details
+	            System.out.print("Enter Patient Name: ");
+	            String name = sc.nextLine();
+
+	            System.out.print("Enter Age: ");
+	            int age = sc.nextInt();
+	            sc.nextLine(); 
+
+	            System.out.print("Enter Disease: ");
+	            String disease = sc.nextLine();
+
+	            System.out.print("Enter Admission Date (yyyy-mm-dd): ");
+	            String Admission_Date = sc.nextLine();
+
+	            System.out.print("Enter Doctor Assigned: ");
+	            String doctor_Assigned = sc.nextLine();
+				
+				stmt.executeUpdate(sql);
+				System.out.println("Table 'Patient' created successfully.");
+				con.close();
+			 }
+			catch (Exception e)
+			{
+			e.printStackTrace();
+					
+			}
+	}
+
+		 
+		 
+
+	}
+

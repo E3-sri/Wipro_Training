@@ -1,0 +1,9 @@
+import java.util.Scanner;
+public static void main(String[]args)
+{
+	String name;
+	Scanner sc=new Scanner(System.in);
+	name=sc.next("Enter name:");
+	System.out.println(name);
+	sc.close();
+}

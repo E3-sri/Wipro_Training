@@ -1,0 +1,50 @@
+package com.ClassWork;
+
+import java.sql.*;
+
+public class DeleteEmp 
+{
+		public static void main(String[] args)
+		{
+			
+			String url = "jdbc:mysql://localhost:3306/Worker"; 
+	        String username = "root";     
+	        String password = "Hyma@2002";
+			 try
+				{
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					
+					Connection con=DriverManager.getConnection(url,username,password);
+					
+					String deleteSQL= "DELETE FROM  Employee  WHERE Salary=? ";
+					
+					PreparedStatement pstmt=con.prepareStatement(deleteSQL);
+					
+					pstmt.setInt(1,10000);
+					
+					int rowsDeleted = pstmt.executeUpdate();
+
+		            if (rowsDeleted > 0) {
+		                System.out.println("Employee with Salary has been deleted successfully.");
+		            }
+		            else
+		            {
+		                System.out.println("No Employee found with Salary");
+		            }
+
+		            pstmt.close();
+		            con.close();
+		            
+				 } 
+			 
+			 catch (Exception e) 
+			 {
+			            e.printStackTrace();
+			  }
+					
+					
+					
+		}			
+					
+					
+}

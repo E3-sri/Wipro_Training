@@ -1,0 +1,28 @@
+package Cls_work;
+//import java.util.Scanner;
+import java.util.TreeSet;
+
+public class TreeSetDemo 
+{
+
+	public static void main(String[] args) 
+	{
+		
+	TreeSet<Integer> rooms =new TreeSet<>();
+	
+	rooms.add(201);
+	rooms.add(305);
+	rooms.add(250);
+	rooms.add(120);
+	
+	
+	System.out.println("Avaliable Rooms (Sorted):");
+	for(int room : rooms)
+	{
+		System.out.println("Rooms: "+room);
+	}	
+	System.out.println("First Room:\n"+rooms.first());
+	System.out.println("Last Room:\n"+rooms.last());		
+	}
+
+}

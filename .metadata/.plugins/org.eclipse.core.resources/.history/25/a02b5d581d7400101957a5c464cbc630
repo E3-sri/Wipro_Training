@@ -1,0 +1,19 @@
+package cls_work;
+import java.util.Scanner;
+public class NotifyMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Your meassage");
+		String message=sc.nextLine();
+		Notify e_obj=new Email();
+		Notify s_obj=new SMS();
+
+		e_obj(message);
+		s_obj(message);
+		sc.close();
+		
+	}
+
+}

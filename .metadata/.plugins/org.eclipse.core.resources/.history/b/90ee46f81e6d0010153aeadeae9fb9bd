@@ -1,0 +1,106 @@
+/*✅ Use Case: Manage Scheduled Appointments in Sorted Order
+🎯 Scenario:
+In a hospital system, patients book appointments. Each appointment has a date and time. The hospital wants to:
+Maintain sorted appointments (by date/time).
+Avoid duplicate appointment entries.
+Display all appointments in chronological order.
+ */
+ 
+
+
+package Cls_work;
+import java.lang.Comparable;
+import java.util.Comparator;
+import java.util.TreeSet;
+//import java.util.Scanner;
+
+class Patient implements Comaparable <Patient>
+{
+	String id;
+	String name;
+	String date;
+	String time;
+	
+	public Patient(String id,String name,String date,String time)
+	{
+		this.id=id;
+		this.name=name;
+		this.date=date;
+		this.time=time;
+	}
+	
+	public String getId()
+	{
+		return id;
+	}
+	public String getName()
+	{
+		return name;
+	}
+	public String getDate()
+	{
+		return date;
+	}
+	public String getTime()
+	{
+		return time;
+	}
+	
+	
+	 public int compareTo(Patient other)
+	 {
+	        int dateCompare = this.date.compareTo(other.date);
+	        if (dateCompare != 0)
+	        {
+	            return dateCompare;
+	        } 
+	        
+	        else
+	        {
+	            return this.time.compareTo(other.time);
+	        }
+	  }
+	 	@Override
+	    public String toString()
+	    {
+	        return "Patient [ID: " + id + ", Name: " + name + ", Date: " + date + ", Time: " + time + "]";
+	    }
+
+	    @Override
+	    public boolean equals(Object obj)
+	    {
+	        if (this == obj) return true;
+	        if (!(obj instanceof Patient)) return false;
+	        Patient other = (Patient) obj;
+	        return this.date.equals(other.date) && this.time.equals(other.time);
+	    }
+
+	    @Override
+	    public int hashCode()
+	    {
+	        return (date + time).hashCode();  // Ensures same date+time = same hash
+	    }
+}
+
+public class TreeDemo 
+{
+
+	public static void main(String[] args)
+	{
+		TreeSet <Patient> set=new TreeSet<>();
+		
+	     	set.add(new Patient("P01", "Sree", "2025-08-01", "09:00"));
+	        set.add(new Patient("P02", "Hyma", "2025-08-01", "10:00"));
+	        set.add(new Patient("P03", "Lakshmi", "2025-07-31", "15:30"));
+	        set.add(new Patient("P02", "Hymavathi", "2025-08-01", "10:00"));
+	        
+	        
+	        System.out.println(" Scheduled Appointments (Sorted):");
+	        for (Patient p : set) {
+	            System.out.println(p);
+	        }
+	    }
+
+	}
+
+}

@@ -1,0 +1,43 @@
+package home;
+import java.util.Scanner;
+
+public class TwoDimDynamic 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter number of ROWS:");
+		int rows=sc.nextInt();
+		
+		System.out.println("Enter number of COLUMNS:");
+		int cols=sc.nextInt();
+		
+		
+		int mul_dim [][]=new int [rows][cols];
+		
+		System.out.println("Enter data into array in 3*3 matrix form");
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				mul_dim[i][j]=sc.nextInt();
+			
+			}	
+		}
+		System.out.println("Prininting the data from array\n");
+		
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				System.out.print(mul_dim[i][j]+" ");
+			}
+			System.out.println();
+		}
+		sc.close();
+
+	}
+
+}

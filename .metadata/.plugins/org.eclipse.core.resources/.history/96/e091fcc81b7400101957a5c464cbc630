@@ -1,0 +1,66 @@
+/*
+ * ✅ Use Case: Patient Appointment Scheduler in Hospital (Using TreeMap)
+🎯 Scenario:
+In a hospital system, patient appointments must be stored in sorted order based on their appointment time (or ID, or any other natural order). Doctors and staff should be able to:
+Add appointments
+View all scheduled appointments in order
+Remove a specific appointment
+Reschedule an appointment
+Check the next or last appointment
+ 
+ */
+
+package Cls_work;
+
+import java.util.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+class PatientAppointment {
+    private String patientName;
+    private int id;
+    private LocalDateTime time;
+
+    public PatientAppointment(String patientName, int id, LocalDateTime time) {
+        this.patientName = patientName;
+        this.id = id;
+        this.time = time;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setTime(LocalDateTime time) {
+        this.time = time;
+    }
+
+    public LocalDateTime getTime() {
+        return time;
+    }
+
+    @Override
+    public String toString() {
+        return "Patient Name: " + patientName + "  ID: " + id + "  Time: " + time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    }
+}
+
+public class TreeMapHospital {
+
+    private static TreeMap<LocalDateTime, PatientAppointment> patientMap = new TreeMap<>();
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        boolean loop = true;
+
+        while (loop) {
+            System.out.println("\n***** Hospital Appointment Scheduler ******\n");
+            System.out.println("1. Add Appointment");
+            System.out.println("2. View All Appointments");
+            System.out.println("3. Remove Appointment");
+            System.out.println("4. Reschedule Appointment");
+            System.out.println("5. View Next

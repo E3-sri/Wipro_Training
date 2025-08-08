@@ -1,0 +1,73 @@
+package home;
+import java.util.Scanner;
+
+public class MatrixAddition
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		
+		int [][] mul_dim_arr1=new int [2][2];
+		
+		int [][] mul_dim_arr2= new int[2][2];
+		
+		
+		int mul_dim;
+		
+		System.out.println("Enter data in to arrays 2*2:\n");
+		for (int i=0;i<(mul_dim_arr1).length;i++)
+		{
+			for (int j=0;j<(mul_dim_arr2).length;j++)
+			{
+				 mul_dim_arr1[i][j]=sc.nextInt();
+				 
+				 mul_dim_arr2[i][j]=sc.nextInt();
+				 
+			}
+		}
+		
+		
+			System.out.println("Printing mul_dim_array1\n");
+		
+			for (int i=0;i<(mul_dim_arr1).length;i++)
+			{
+			for (int j=0;j<(mul_dim_arr2).length;j++)
+			{
+				System.out.print(mul_dim_arr1[i][j]+" ");
+				
+			}
+			System.out.println();
+			}
+			
+			System.out.println("Printing mul_dim_array2\n");
+			
+			for (int i=0;i<(mul_dim_arr1).length;i++)
+			{
+				for (int j=0;j<(mul_dim_arr2).length;j++)
+				{
+					System.out.print(mul_dim_arr2[i][j]+" ");
+					
+				}
+				System.out.println();
+			
+			}
+			
+			System.out.println("Addition of matrix");
+			
+			for (int i=0;i<(mul_dim_arr1).length;i++)
+			{
+				for (int j=0;j<(mul_dim_arr2).length;j++)
+				{
+					mul_dim= mul_dim_arr1[i][j]+mul_dim_arr2[i][j];
+					System.out.print(mul_dim+" ");
+					
+				}
+				System.out.println();
+			
+			}
+	sc.close();
+	}
+	
+}
+

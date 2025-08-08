@@ -1,0 +1,36 @@
+package home;
+import java.util.Scanner;
+
+public class JaggedArray {
+
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		
+		int [][] jagged_Array=new int[3][];
+		
+		jagged_Array[0]=new int[3];
+		jagged_Array[1]=new int[4];
+		jagged_Array[2]=new int[2];
+		
+		System.out.println("ENter elements into array");
+		for (int i=0;i<jagged_Array.length;i++)
+		{
+			for(int j=0;j<jagged_Array[i].length;j++)
+			{
+				jagged_Array[i][j]=sc.nextInt();
+				
+			}
+		}
+		for(int i=0;i<jagged_Array.length;i++)
+		{
+			for(int j=0;j<jagged_Array[i].length;j++)
+			{
+				System.out.print(jagged_Array[i][j]+" ");
+			}
+			System.out.println();
+		}
+		sc.close();
+	}
+
+}

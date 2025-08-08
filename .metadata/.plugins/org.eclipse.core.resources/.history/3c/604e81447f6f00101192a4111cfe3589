@@ -1,0 +1,37 @@
+package com.ClassWork;
+
+import java.sql.*;
+
+public class Employee {
+
+	public static void main(String[] args)
+	{
+		String url = "jdbc:mysql://localhost:3306/Worker"; 
+        String username = "root";     
+        String password = "Hyma@2002";
+		 try
+			{
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				
+				Connection con=DriverManager.getConnection(url,username,password);
+				
+					
+				Statement stmt=con.createStatement();
+				
+				String sql="CREATE TABLE IF NOT EXISTS Employee("+"id INT PRIMARY KEY AUTO_INCREMENT,"
+						+ "Name VARCHAR(100),"+"Age INT,"+" Department VARCHAR(100) ,"+"Joining_Date DATE,"+"  Salary INT";
+				
+				stmt.executeUpdate(sql);
+				System.out.println("Table 'Employee' created successfully.");
+				con.close();
+				
+			
+			 }
+			catch (Exception e)
+			{
+			e.printStackTrace();
+					
+			}
+	}
+}
+

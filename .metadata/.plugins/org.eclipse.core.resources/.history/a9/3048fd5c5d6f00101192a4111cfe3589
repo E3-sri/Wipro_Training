@@ -1,0 +1,62 @@
+package com.ClassWork;
+import java.sql.*;
+
+
+public class DBConnectivity {
+
+	public static void main(String[] args)
+	{
+		
+		String url = "jdbc:mysql://localhost:3306/Hospital"; 
+        String username = "root";     
+        String password = "Hyma@2002"; 
+        
+        try
+		{
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			Connection con=DriverManager.getConnection(url,username,password);
+			
+			
+			//Statement stmt=con.createStatement();
+			
+			
+			
+			String sql= "INSERT INTO patient(name,age,disease) VALUES(?,?,?)";
+			
+			
+			PreparedStatement pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1,"Sree Lakshmi");
+			
+			pstmt.setInt(2, 23);
+			
+			pstmt.setString(3, "Cold");
+			
+			
+			int rowInserted =pstmt.executeUpdate();
+			
+			if(rowInserted>0)
+			{
+				System.out.println("Values in patient table inserted Successfully.");
+			}
+			
+			
+			pstmt.executeUpdate(sql);
+			
+			System.out.println(" 'Patient Table'  created Successfully");
+			
+			con.close();
+	
+		}
+		
+		catch(Exception e )
+		{
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
+

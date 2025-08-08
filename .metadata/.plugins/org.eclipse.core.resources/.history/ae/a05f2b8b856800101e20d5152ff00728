@@ -1,0 +1,34 @@
+package BankingModule;
+import java.util.Scanner;
+public class LamdaExample
+{
+public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter a value:");
+		int a=sc.nextInt();
+		System.out.println("Enter b value:");
+		int b=sc.nextInt();
+		
+		LambdaInterface add=(x,y) -> x+y;
+		LambdaInterface sub=(x,y) -> x-y;
+		LambdaInterface mul=(x,y) -> x*y;
+		LambdaInterface div=(x,y) -> {
+			if(y==0)
+			{
+				System.out.println("Cannot divide by Zero");
+				return 0;
+			}
+			else
+				
+				return x/y;
+		};
+		
+		System.out.println("Addition: " + add.operate(a,b));
+        System.out.println("Subtraction: " + sub.operate(a,b));
+        System.out.println("Multiplication: " + mul.operate(a,b));
+        System.out.println("Division: " + div.operate(a,b));
+        sc.close();
+	}
+
+}

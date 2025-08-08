@@ -1,0 +1,24 @@
+package home;
+import java.util.Scanner;
+
+public class TwoDimDynamic 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter number of ROWS:");
+		int rows=sc.nextInt();
+		
+		System.out.println("Enter number of COLUMNS:");
+		int cols=sc.nextInt();
+		
+		
+		int mul_dim [][]=new int [rows][cols];
+		
+		
+
+	}
+
+}

@@ -1,0 +1,45 @@
+package com.ClassWork;
+import java.sql.*;
+
+
+public class DBConnectivity {
+
+	public static void main(String[] args)
+	{
+		
+		String url = "jdbc:mysql://localhost:3306/student"; 
+        String username = "root";     
+        String password = "Hyma@2002"; 
+        
+        try
+		{
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			Connection con=DriverManager.getConnection(url,username,password);
+			
+			//System.out.pritnln("Connection Established");
+			
+			Statement stmt=con.createStatement();
+			
+			String sql="CREATE TABLE IF NOT EXISTS patient("+"id INT PRIMARY KEY AUTO_INCREMENT,"
+			+ "name VARCHAR(100),"+"age INT ,"+"disease VARCHAR(100))";
+			
+			
+			stmt.executeUpdate(sql);
+			
+			System.out.println("Patient Table  created Successfully");
+			
+			con.close();
+	
+		}
+		
+		catch(Exception e )
+		{
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
+
