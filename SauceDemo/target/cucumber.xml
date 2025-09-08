@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="396.922" tests="18" skipped="0" failures="6" errors="0">
+<testcase classname="checkout Functionality" name="Checkout after items added to cart. - Example #1.1" time="37.542">
+<system-out><![CDATA[
+Given User is logged with username "standard_user" and password "password"..passed
+When User clicks on the product and adds it to cart.........................passed
+Then User navigates to the cart and clicks on checkout......................passed
+When User fills checkout details with "John" "Doe" "12345"..................passed
+And User clicks on continue.................................................passed
+And User clicks on finish...................................................passed
+Then User should see the confirmation message "Thank you for your order!"...passed
+When User click on BackToHome button user should be navigated to home page..passed
+]]></system-out>
+</testcase>
+<testcase classname="checkout Functionality" name="Checkout after items added to cart. - Example #1.2" time="44.709">
+<failure type="java.lang.NullPointerException" message="Cannot invoke &quot;com.aventstack.extentreports.ExtentTest.fail(String)&quot; because the return value of &quot;com.saucedemo.utils.ExtentManager.getTest()&quot; is null">
+<![CDATA[java.lang.NullPointerException: Cannot invoke "com.aventstack.extentreports.ExtentTest.fail(String)" because the return value of "com.saucedemo.utils.ExtentManager.getTest()" is null
+	at com.saucedemo.stepdefinitions.Checkout.user_clicks_on_finish(Checkout.java:124)
+	at ✽.User clicks on finish(file:///C:/Users/hp/eclipse-workspace/DemoWebsite/SauceDemo/src/test/resources/features/Checkout.feature:10)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User is logged with username "performance_glitch_user" and password "password".passed
+When User clicks on the product and adds it to cart.........................passed
+Then User navigates to the cart and clicks on checkout......................passed
+When User fills checkout details with "" "" ""..............................passed
+And User clicks on continue.................................................passed
+And User clicks on finish...................................................failed
+Then User should see the confirmation message "Thank you for your order!"...skipped
+When User click on BackToHome button user should be navigated to home page..skipped
+]]></system-out>
+</testcase>
+<testcase classname="checkout Functionality" name="Checkout after items added to cart. - Example #1.3" time="35.416">
+<system-out><![CDATA[
+Given User is logged with username "visual_user" and password "password"....passed
+When User clicks on the product and adds it to cart.........................passed
+Then User navigates to the cart and clicks on checkout......................passed
+When User fills checkout details with "@@@" "$$$" "!!!".....................passed
+And User clicks on continue.................................................passed
+And User clicks on finish...................................................passed
+Then User should see the confirmation message "Thank you for your order!"...passed
+When User click on BackToHome button user should be navigated to home page..passed
+]]></system-out>
+</testcase>
+<testcase classname="checkout Functionality" name="Checkout after items added to cart. - Example #1.4" time="45.342">
+<system-out><![CDATA[
+Given User is logged with username "performance_glitch_user" and password "password".passed
+When User clicks on the product and adds it to cart.........................passed
+Then User navigates to the cart and clicks on checkout......................passed
+When User fills checkout details with "@@@" "###" "@3$%"....................passed
+And User clicks on continue.................................................passed
+And User clicks on finish...................................................passed
+Then User should see the confirmation message "Thank you for your order!"...passed
+When User click on BackToHome button user should be navigated to home page..passed
+]]></system-out>
+</testcase>
+<testcase classname="checkout Functionality" name="Checkout after items added to cart. - Example #1.5" time="45.249">
+<system-out><![CDATA[
+Given User is logged with username "performance_glitch_user" and password "password".passed
+When User clicks on the product and adds it to cart.........................passed
+Then User navigates to the cart and clicks on checkout......................passed
+When User fills checkout details with "123456" "123578" "@3$%"..............passed
+And User clicks on continue.................................................passed
+And User clicks on finish...................................................passed
+Then User should see the confirmation message "Thank you for your order!"...passed
+When User click on BackToHome button user should be navigated to home page..passed
+]]></system-out>
+</testcase>
+<testcase classname="checkout Functionality" name="Checkout after adding multiple products - Example #1.1" time="35.244">
+<system-out><![CDATA[
+Given User is logged with username "standard_user" and password "password"..passed
+When User adds multiple products to the cart................................passed
+And User navigates to the cart and clicks on checkout.......................passed
+And User fills checkout details with "John" "Doe" "12345"...................passed
+And User clicks on continue.................................................passed
+And User clicks on finish...................................................passed
+Then User should see the confirmation message "Thank you for your order!"...passed
+When User click on BackToHome button user should be navigated to home page..passed
+]]></system-out>
+</testcase>
+<testcase classname="checkout Functionality" name="Checkout after adding multiple products - Example #1.2" time="35.499">
+<system-out><![CDATA[
+Given User is logged with username "visual_user" and password "password"....passed
+When User adds multiple products to the cart................................passed
+And User navigates to the cart and clicks on checkout.......................passed
+And User fills checkout details with "Jane" "smith" "67890".................passed
+And User clicks on continue.................................................passed
+And User clicks on finish...................................................passed
+Then User should see the confirmation message "Thank you for your order!"...passed
+When User click on BackToHome button user should be navigated to home page..passed
+]]></system-out>
+</testcase>
+<testcase classname="Login Functionality" name="Login With Different Credentials - Example #1.1" time="8.279">
+<system-out><![CDATA[
+Given User is on the login page with "edge" browser.........................passed
+When User enters username "standard_user"...................................passed
+And User enters password "password".........................................passed
+And click on login button...................................................passed
+Then user navigated to home page............................................passed
+And user verify the login result "Success"..................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Login Functionality" name="Login With Different Credentials - Example #1.2" time="7.936">
+<failure type="java.lang.AssertionError" message="User not redirected to home page.">
+<![CDATA[java.lang.AssertionError: User not redirected to home page.
+	at org.testng.Assert.fail(Assert.java:111)
+	at com.saucedemo.stepdefinitions.Login.user_navigated_to_the_home_page(Login.java:55)
+	at ✽.user navigated to home page(file:///C:/Users/hp/eclipse-workspace/DemoWebsite/SauceDemo/src/test/resources/features/Login.feature:9)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User is on the login page with "edge" browser.........................passed
+When User enters username "Sree"............................................passed
+And User enters password "invalidPassword"..................................passed
+And click on login button...................................................passed
+Then user navigated to home page............................................failed
+And user verify the login result "Fail".....................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Login Functionality" name="Login With Different Credentials - Example #1.3" time="7.8">
+<failure type="java.lang.AssertionError" message="User not redirected to home page.">
+<![CDATA[java.lang.AssertionError: User not redirected to home page.
+	at org.testng.Assert.fail(Assert.java:111)
+	at com.saucedemo.stepdefinitions.Login.user_navigated_to_the_home_page(Login.java:55)
+	at ✽.user navigated to home page(file:///C:/Users/hp/eclipse-workspace/DemoWebsite/SauceDemo/src/test/resources/features/Login.feature:9)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User is on the login page with "edge" browser.........................passed
+When User enters username "error_user"......................................passed
+And User enters password "blankPassword"....................................passed
+And click on login button...................................................passed
+Then user navigated to home page............................................failed
+And user verify the login result "Fail".....................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Login Functionality" name="Login With Different Credentials - Example #1.4" time="7.718">
+<failure type="java.lang.AssertionError" message="User not redirected to home page.">
+<![CDATA[java.lang.AssertionError: User not redirected to home page.
+	at org.testng.Assert.fail(Assert.java:111)
+	at com.saucedemo.stepdefinitions.Login.user_navigated_to_the_home_page(Login.java:55)
+	at ✽.user navigated to home page(file:///C:/Users/hp/eclipse-workspace/DemoWebsite/SauceDemo/src/test/resources/features/Login.feature:9)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User is on the login page with "edge" browser.........................passed
+When User enters username ""................................................passed
+And User enters password "blankPassword"....................................passed
+And click on login button...................................................passed
+Then user navigated to home page............................................failed
+And user verify the login result "Fail".....................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Login Functionality" name="Login With Different Credentials - Example #1.5" time="8.78">
+<system-out><![CDATA[
+Given User is on the login page with "edge" browser.........................passed
+When User enters username "problem_user"....................................passed
+And User enters password "password".........................................passed
+And click on login button...................................................passed
+Then user navigated to home page............................................passed
+And user verify the login result "Success"..................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Login Functionality" name="Login With Different Credentials - Example #1.6" time="13.353">
+<system-out><![CDATA[
+Given User is on the login page with "edge" browser.........................passed
+When User enters username "performance_glitch_user".........................passed
+And User enters password "password".........................................passed
+And click on login button...................................................passed
+Then user navigated to home page............................................passed
+And user verify the login result "Success"..................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Login Functionality" name="Login With Different Credentials - Example #1.7" time="7.965">
+<failure type="java.lang.AssertionError" message="User not redirected to home page.">
+<![CDATA[java.lang.AssertionError: User not redirected to home page.
+	at org.testng.Assert.fail(Assert.java:111)
+	at com.saucedemo.stepdefinitions.Login.user_navigated_to_the_home_page(Login.java:55)
+	at ✽.user navigated to home page(file:///C:/Users/hp/eclipse-workspace/DemoWebsite/SauceDemo/src/test/resources/features/Login.feature:9)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User is on the login page with "edge" browser.........................passed
+When User enters username "invalid_user"....................................passed
+And User enters password "password".........................................passed
+And click on login button...................................................passed
+Then user navigated to home page............................................failed
+And user verify the login result "Fail".....................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Login Functionality" name="Login With Different Credentials - Example #1.8" time="7.878">
+<failure type="java.lang.AssertionError" message="User not redirected to home page.">
+<![CDATA[java.lang.AssertionError: User not redirected to home page.
+	at org.testng.Assert.fail(Assert.java:111)
+	at com.saucedemo.stepdefinitions.Login.user_navigated_to_the_home_page(Login.java:55)
+	at ✽.user navigated to home page(file:///C:/Users/hp/eclipse-workspace/DemoWebsite/SauceDemo/src/test/resources/features/Login.feature:9)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User is on the login page with "edge" browser.........................passed
+When User enters username "@@@".............................................passed
+And User enters password "invalidPassword"..................................passed
+And click on login button...................................................passed
+Then user navigated to home page............................................failed
+And user verify the login result "Fail".....................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Cart Page Functionality" name="Checking whether the Functionalities in the cart page are working properly or not - Example #1.1" time="21.433">
+<system-out><![CDATA[
+Given User with username "visual_user" and password "password" with "edge" browser.passed
+When User clicks on the add to cart button of the product...................passed
+Then Product should be added to cart........................................passed
+And Count of the cart should be increased...................................passed
+When User clicks on remove button...........................................passed
+Then product should be removed from cart....................................passed
+And decrease the count of cart..............................................passed
+When User clicks on continue shopping button................................passed
+Then User should be navigated back to products page.........................passed
+]]></system-out>
+</testcase>
+<testcase classname="Cart Page Functionality" name="Add and verify multiple products in the cart - Example #1.1" time="7.514">
+<system-out><![CDATA[
+Given User is logged into SauceDemo with username "standard_user" and password "password" with "edge" browser.passed
+When User adds multiple products to cart....................................passed
+Then Cart should display all selected products..............................passed
+And Cart count should match number of added products........................passed
+]]></system-out>
+</testcase>
+<testcase classname="Cart Page Functionality" name="Checkout attempt with empty cart - Example #1.1" time="18.763">
+<system-out><![CDATA[
+Given User is logged into SauceDemo with username "visual_user" and password "password" with "edge" browser.passed
+When User navigates to cart without adding products.........................passed
+And User clicks on checkout.................................................passed
+Then System should not proceed to checkout..................................passed
+And Error or empty cart message should be displayed.........................passed
+]]></system-out>
+</testcase>
+</testsuite>

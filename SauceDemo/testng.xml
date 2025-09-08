@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="SauceDemoSuite">
+    <test name="SauceDemoTests">
+        <classes>
+            <class name="com.saucedemo.testrunner.LoginRunner"/>
+            <class name="com.saucedemo.testrunner.ProductRunner"/>
+            <class name="com.saucedemo.testrunner.CartRunner"/>
+            <class name="com.saucedemo.testrunner.CheckoutRunner"/>
+        </classes>
+    </test>
+</suite>
